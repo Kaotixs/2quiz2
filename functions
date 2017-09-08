@@ -1,0 +1,27 @@
+int deleteAtPositionN(struct node **pHead, int n, int *pData) {
+	int i = 1;
+	struct node *curr = NULL, *prev = NULL;
+
+	if (*pHead ) curr = *pHead;
+	else return 0;
+
+	while (pHead != NULL && i < n)
+	{
+		prev = curr;
+		curr = curr->pNext;
+		i++;
+	}
+
+	if (i == 1 && n == 1)
+	{
+		prev = curr;
+		curr= curr->pNext;
+		free(prev);
+	}
+	else if (i == n)
+	{
+		prev->pNext = curr->pNext;
+		free(curr);
+	}
+	return 1;
+}
